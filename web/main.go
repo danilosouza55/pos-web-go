@@ -25,6 +25,7 @@ func main() {
 	//aqui podemos colocar logs, inclusão e validação de cabeçalhos, etc
 	n := negroni.New(
 		negroni.NewLogger(),
+		negroni.HandlerFunc(addContentType),
 	)
 	//handlers
 	handlers.MakeBeerHandlers(r, n, service)
@@ -54,5 +55,16 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
 
+func addContentType(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	contentTypeHeader := "text/html"
+
+	switch r.Header.Get("Accept") {
+	case "application/json":
+		contentTypeHeader = "application/json"
+	}
+
+	w.Header().Set("Content-Type", contentTypeHeader)
+	next(w, r)
 }
