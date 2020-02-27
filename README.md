@@ -1,7 +1,7 @@
 # pos-web-go
 Trabalho da disciplina Desenvolvimento Web Com Go
 
-Alunos: Danilo Araújo de Souza - danilo.asouza1@gmail.com
+Aluno: Danilo Araújo de Souza - danilo.asouza1@gmail.com
 
 #Start
 
